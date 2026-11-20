@@ -1,0 +1,216 @@
+hola\n"x"<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Votemos la casa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light dark;
+--bg:light-dark(#fffaf0,#12201a);--card:light-dark(#ffffff,#1b2d25);--ink:light-dark(#1e3a2f,#eef3ee);--mute:light-dark(#5b6d63,#a9b8ae);
+--sun:#ffc93c;--sunInk:#1e3a2f;--lake:light-dark(#2a6fdb,#6ea4ff);--line:light-dark(#e6dfcf,#2c4338);--bad:light-dark(#b3361f,#ff8a73)}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Archivo,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Archivo Black",Archivo,sans-serif;font-weight:400;line-height:1.05;text-wrap:balance;margin:0}
+a{color:var(--lake)}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+header.band{background:var(--sun);color:var(--sunInk);padding-bottom:clamp(28px,4vw,56px)}
+header h1{font-size:clamp(34px,5.5vw,52px)}
+header p.sub{font-size:17px;margin:10px 0 0;max-width:60ch}
+.top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);margin-top:26px;align-items:stretch}
+.panel{background:#fffdf6;border-radius:18px;padding:18px;box-shadow:0 2px 0 rgba(30,58,47,.15)}
+.fig{position:relative;min-height:340px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.panel h2{font-size:22px;margin-bottom:10px;color:#1e3a2f}
+.rows{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;color:#1e3a2f}
+.num{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#1e3a2f;color:#ffc93c;font:700 14px Archivo}
+.bar{height:12px;border-radius:6px;background:#efe6cc;overflow:hidden;margin-top:4px}
+.bar i{display:block;height:100%;background:#2a6fdb;border-radius:6px;transition:width .5s}
+.row .lab{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .v{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.who{font-size:13px;color:#5b6d63;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nm{display:flex;align-items:center;gap:10px;font-weight:700;color:#1e3a2f;margin-bottom:14px}.nm input{flex:1;min-height:44px;font:16px Archivo;padding:0 12px;border:2px solid #1e3a2f;border-radius:10px;background:#fff;color:#1e3a2f}.nm input:focus-visible{outline:3px solid #2a6fdb}
+.status{font-size:14px;margin-top:14px;color:#3b5246}
+.facts{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-weight:600;font-size:15px}
+.facts span{white-space:nowrap}
+main .grid{display:grid;gap:clamp(20px,3vw,32px)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+.card.mine{outline:3px solid var(--lake);outline-offset:-3px}
+.gal{position:relative;min-height:320px;background:linear-gradient(160deg,#2f5b48,#1e3a2f 60%,#2a6fdb);color:#fff}
+.gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.gal .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px}
+.gal .ph svg{width:min(70%,260px);height:auto;opacity:.9}
+.gal .ph a{color:#fff;font-weight:700}
+.gal .nav{position:absolute;bottom:12px;right:12px;display:flex;gap:8px}
+.gal .nav button{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#1e3a2f;font:700 20px Archivo;cursor:pointer}
+.gal .count{position:absolute;bottom:20px;left:14px;background:rgba(0,0,0,.55);padding:3px 10px;border-radius:12px;font-size:13px}
+.badge{position:absolute;top:14px;left:14px;background:var(--sun);color:#1e3a2f;font:400 22px "Archivo Black";width:46px;height:46px;border-radius:50%;display:grid;place-items:center;z-index:2}
+.body{padding:clamp(18px,2.5vw,28px);display:flex;flex-direction:column;gap:12px}
+.body h3{font-size:clamp(22px,2.6vw,28px)}
+.place{color:var(--mute);font-weight:600}
+.specs{display:flex;flex-wrap:wrap;gap:6px}
+.specs span{border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:14px;white-space:nowrap}
+.price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+.price b{font:400 clamp(24px,3vw,30px) "Archivo Black";white-space:nowrap}
+.price small{color:var(--mute);font-size:14px;white-space:nowrap}
+.na{color:var(--bad);font-weight:700}
+.body p{margin:0}
+ul.am{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 14px;font-size:15px}
+ul.am li::before{content:"✓ ";color:var(--lake);font-weight:700}
+.warn{font-size:14px;color:var(--bad)}
+details summary{cursor:pointer;font-weight:700;color:var(--lake);min-height:28px}
+details p{white-space:pre-line;font-size:15px;margin-top:8px}
+.links{display:flex;flex-wrap:wrap;gap:8px 16px;font-weight:600;font-size:15px}
+.vote{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{min-height:48px;padding:0 22px;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:var(--bg);font:700 16px Archivo;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:focus-visible,.gal button:focus-visible,summary:focus-visible{outline:3px solid var(--lake);outline-offset:2px}
+.vnote{font-size:14px;color:var(--mute)}
+footer{color:var(--mute);font-size:14px}
+@media(max-width:860px){.top{grid-template-columns:minmax(0,1fr)}.card{grid-template-columns:minmax(0,1fr)}.gal{min-height:260px}}
+@media(max-width:600px){ul.am{grid-template-columns:minmax(0,1fr)}.fig{min-height:280px}}
+@media(prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<header class="band">
+  <div class="wrap">
+    <h1>¿A qué casa nos vamos para Año Nuevo?</h1>
+    <p class="sub">Seis opciones en las Sierras de Córdoba. Mirá cada una, poné tu nombre y votá tu favorita. Podés cambiar tu voto cuando quieras.</p>
+    <div class="facts"><span>30 dic → 4 ene · 5 noches</span><span>7 personas</span><span>Precios totales en ARS, consultados el 20/11</span></div>
+    <div class="top">
+      <div class="panel"><h2>Dónde queda cada una</h2><div class="fig" id="map"></div></div>
+      <div class="panel"><h2>Cómo viene la votación</h2><label class="nm">Tu nombre <input id="nombre" maxlength="40" autocomplete="given-name" placeholder="Ej: Nacho"></label><div class="rows" id="results"></div><div class="status" id="status">Cargando votos…</div></div>
+    </div>
+  </div>
+</header>
+<main class="band"><div class="wrap grid" id="cards"></div></main>
+<footer class="band"><div class="wrap">Datos tomados de Airbnb el 20 de noviembre de 2026 para 7 adultos del 30/12 al 4/1. Los precios pueden cambiar: confirmá en Airbnb antes de reservar. El mapa es un esquema aproximado.</div></footer>
+<script>
+{
+const Q='?adults=7&check_in=2026-12-30&check_out=2027-01-04';
+const H=[
+{id:'1381730683573160843',n:1,name:'Casa luminosa en las Sierras',place:'Estancia Vieja, Villa Carlos Paz',lat:-31.3833,lng:-64.5249,guests:7,rooms:3,beds:5,baths:2,rating:'5,0',reviews:1,price:1100000,cancel:'Cancelación gratis hasta el 29/12',host:'Jorgelina',np:10,
+ short:'Casa amplia y luminosa en Estancia Vieja, a minutos de Carlos Paz, con jacuzzi, patio, parrilla y hogar a leña.',
+ am:['Jacuzzi','Parrilla y patio','Hogar a leña','Aire acondicionado','Cocina completa + lavarropas','Wifi','Estacionamiento gratis','Zona de trabajo'],
+ warn:'Sin detector de humo ni de monóxido. Una sola reseña por ahora.',
+ desc:'Ideal para relajarse en un entorno cuidado y silencioso. Ubicada en Estancia Vieja, combina la paz de las Sierras con fácil acceso a la ciudad. Alquila dueño directo.\n\nCamas: 1 cama de 2½ plazas en la habitación principal (planta alta) · 1 cama marinera (2 camas de 1 plaza) en el entrepiso · habitación de planta baja con 1 cama de 2 plazas + 1 de 1 plaza.\n\nCerca: Embalse San Roque y río Los Chorrillos.'},
+{id:'1272823969213957152',n:2,name:'Casa con patio y asador',place:'Nueva Córdoba, ciudad de Córdoba',lat:-31.4283,lng:-64.1892,guests:7,rooms:3,beds:6,baths:1,rating:'4,92',reviews:12,price:940361,cancel:'Cancelación gratis hasta el 29/12',host:'Andrés',np:10,
+ short:'En plena ciudad, en la mejor zona de Nueva Córdoba, a 5 minutos a pie de Plaza España, con quincho y asador en el fondo.',
+ am:['Quincho con asador','Patio','Aire acondicionado en todas las habitaciones','Calefacción','Cocina','Wifi','TV','Escritorio de trabajo'],
+ warn:'Un solo baño completo (más un toilette). Está en la ciudad, no en las sierras.',
+ desc:'Mucho espacio para el grupo. Bares, restaurantes y zona universitaria a metros.\n\nPlanta baja: living con sillón y TV, comedor, cocina, toilette y patio con quincho y asador al fondo.\nPlanta alta: 3 habitaciones (una con cama matrimonial y dos con camas individuales), escritorio grande y baño con ducha.\n\nCerca: Parque de las Tejas y Parque Sarmiento. Los huéspedes destacan la buena onda del anfitrión.'},
+{id:'1810210275318755964',n:3,name:'Casa de campo sobre el río',place:'Mayu Sumaj, cerca de Carlos Paz',lat:-31.4639,lng:-64.5407,guests:8,rooms:3,beds:8,baths:1,rating:null,reviews:0,price:1682009,cancel:'Cancelación gratis hasta el 29/12',host:null,np:8,
+ short:'Casa dentro de un campo de 30 hectáreas con pileta y vistas, a 3 km de Mayu Sumaj y 9 km de Carlos Paz. Río a 80 metros.',
+ am:['Pileta','Río a 80 m','Campo de 30 ha','Senderos de trekking y bici','Aire acondicionado','Cocina','Estacionamiento gratis','Se aceptan mascotas'],
+ warn:'Un solo baño para 8. No incluye toallas. Anuncio nuevo, sin reseñas propias (el anfitrión tiene 4,86 en 29 reseñas).',
+ desc:'Lugar tranquilo y seguro, con opción de servicio de mucama. El río tiene acceso difícil para el público, así que es bastante privado. Incluye ropa de cama (no toallas). Casa completa para 8 personas.'},
+{id:'1735525519978117241',n:4,name:'El Rancho, frente al río',place:'Estancia Vieja, Villa Carlos Paz',lat:-31.397,lng:-64.5189,guests:9,rooms:2,beds:8,baths:2,rating:'5,0',reviews:1,price:1189141,cancel:'Cancelación gratis hasta el 25/12',host:'Carolina',np:10,
+ short:'Casa con historia justo enfrente del río Los Chorrillos, con galería, parrilla y vista a las montañas.',
+ am:['Frente al río','Galería con parrilla','Comedor al aire libre','Jardín privado','Cochera techada','Cocina equipada','Se aceptan mascotas','2 baños con ducha'],
+ warn:'No incluye ropa de cama ni toallas. Solo 2 dormitorios: parte del grupo duerme en los sofás cama del living.',
+ desc:'Gran espacio común con cocina equipada, comedor y living. Amplia galería con asador y parrillero con vista al río y la montaña.\n\nDormitorios: uno con cama matrimonial y otro con dos cuchetas y una cama individual (5 personas). El living tiene dos sofás que se usan como camas.\n\nJardín privado con cochera techada y lugar para varios autos.'},
+{id:'1819918952799362475',n:5,name:'El Soñado',place:'Atos Pampa, cerca de Villa General Belgrano',lat:-31.9452,lng:-64.6636,guests:8,rooms:3,beds:5,baths:2,rating:null,reviews:0,price:null,cancel:null,host:null,np:10,
+ short:'Predio de 33 hectáreas sobre el río, con playa de arena, cascadas y bosque de pinos. Cerca de Villa General Belgrano y La Cumbrecita.',
+ am:['Playa propia sobre el río','Quincho con asador y fogonero','Horno chileno','Galería con vista al río','Wifi','TV','Estacionamiento gratis','46 prestaciones en total'],
+ warn:'Camino de tierra y ripio (mejor auto alto). Luz solar con baterías. Anuncio nuevo, sin reseñas.',
+ desc:'Living comedor amplio con cocina integrada y ventanas a las vistas. Dormitorio principal con cama king y una cama marinera; los otros dos dormitorios tienen cama doble.\n\nAdelante, galería con asador y horno chileno. Atrás, galería con sillones mirando al río y las montañas. Bajando al río hay un quincho con otro asador, fogonero, mesas y sillas. En la playa hay techo para el sol, reposeras y juegos.\n\nAgua de vertiente propia y mosquiteros en las aberturas. Hay un encargado de mantenimiento en el predio.'},
+{id:'1298014822734762709',n:6,name:'Casa con vista al lago',place:'Villa Carlos Paz, Embalse San Roque',lat:-31.4013,lng:-64.5036,guests:10,rooms:2,beds:8,baths:2,rating:'3,5',reviews:2,price:2346989,cancel:'Cancelación gratis hasta el 29/12',host:'Marisa',np:10,
+ short:'A pocos pasos del Embalse San Roque, con pileta y comedor al aire libre mirando al lago, a 12 cuadras del centro de Carlos Paz.',
+ am:['Acceso al lago','Pileta (compartida)','Asador propio','Chimenea','Aire acondicionado en todos los ambientes','Cochera techada','Wifi','TV'],
+ warn:'La más cara. Calificación baja (3,5 con 2 reseñas). La pileta es compartida.',
+ desc:'Muy buena vista y tranquilo, en contacto con la naturaleza. Barrio con seguridad y casa con todas las comodidades. Capacidad para hasta 10 personas.'}
+];
+const PH={"1381730683573160843":["a0f45f08-cb37-4aa2-8b68-11fadb9cd9f4.jpeg","8a9eb4b5-bea5-4eea-a00a-05fad8730a6b.jpeg","b06bc2a7-fe4c-42bb-afe6-5e20cfd580e0.jpeg","e617d779-cd2d-4814-81c2-9d562a3aa04b.jpeg","b0d4e59f-ef1b-4bce-acb8-7376d58c943c.jpeg","b5b1693f-bad8-4950-a7a0-0900e430de0d.jpeg","ba3f7870-682e-41e9-bc66-a0d1d3f6a025.jpeg","0ff05c18-37d2-44c1-9e6f-9a9ce56f88c9.jpeg","f79c9635-1246-472f-8999-568dd2b8de24.jpeg","2d6e1ec6-4e16-4296-93fe-07206b4d0acc.jpeg"],"1272823969213957152":["8d526225-7e8d-4dea-86fc-97af2d162243.jpeg","3567c21b-443c-4f49-a2aa-e10d652093c1.jpeg","f94f0fd5-7f59-4abb-8bf6-33d6465809ff.jpeg","61126874-ee08-4af2-8ad9-5336310e0647.jpeg","7cd0a554-ca88-4779-afd2-e40680395d42.jpeg","f42cae0c-e750-47d4-8af2-5c4b7bf0e579.jpeg","0116cade-73cf-45f6-9815-003e44bf7424.jpeg","f81e89a5-eec3-473c-a192-19981d5c963d.jpeg","75cee044-45c0-450b-a053-b1e7224c5a8c.jpeg","852c137a-b8bb-4dad-89b8-5f128abf539b.jpeg"],"1810210275318755964":["bdf670b6-79ec-4f13-9687-ac27b13be344.jpeg","b425cf20-8a57-4bec-a72f-1cb86383ef63.jpeg","2a72a92b-528e-4e2f-9a7f-805a6cff64fe.jpeg","e05d8e9c-fa36-4812-97c8-3e3fabaa6094.jpeg","d785a303-8bc2-4c78-aaa9-fb963c5cd552.jpeg","042590dd-a171-45b5-acc4-f97ff6c8e4df.jpeg","59e544e0-1eb6-414b-81fa-2de17cc33cf0.jpeg","888ffe38-1805-4e6f-ad3d-2f58335f04d4.jpeg"],"1735525519978117241":["b5f64778-4866-4d5a-b3b2-28b90c66d747.jpeg","13f88a7c-3a4c-4f5d-9130-bffd23fc81ee.jpeg","a4c4d869-227e-4a11-8b98-267042d9586d.jpeg","4cd55e2e-37e9-40d8-8913-2b95e64e33ad.jpeg","115f9cdd-235b-4e94-b8ff-b6e74f9040d0.jpeg","e5e0b99c-ab41-498f-bc20-499de03c158f.jpeg","84061003-a1a4-4def-b422-4e90ae6ca45f.jpeg","106e31b0-e84b-4351-afbc-a24014a2d25b.jpeg","1edcdcc1-d6dd-428e-82c6-ca8a6cfebe38.jpeg","6b78edb6-1d58-4711-a349-4b508e02a56b.jpeg"],"1819918952799362475":["c235a644-a503-4758-8c96-58cab03e8da4.jpeg","116be207-e859-49bb-bff0-3ecadfd4eca8.jpeg","53d6e6bd-1302-46e1-aa86-d2c65fef79d8.jpeg","0dada113-a445-4aaf-84d7-35799c933556.jpeg","8b30647f-8ebe-4c09-aff1-5843da9a655e.jpeg","51b3b1d5-db6d-43f2-95a9-ca9636623c4e.jpeg","9a028992-e37c-4346-8b32-ca26eb4761f9.jpeg","0e977971-eb5d-4f8d-8ef4-28b9f9c751f8.jpeg","fe5c2939-aae8-4ac1-85d5-40c6b04630ad.jpeg","964b3f10-782c-49f9-8630-8c47c47924c9.jpeg"],"1298014822734762709":["5296bec7-aa3e-4bda-93aa-a1daf53df780.jpeg","4204a603-1454-4cd4-b63d-39bb63c9eb1a.jpeg","33eb8190-376b-4a54-801b-e7e2c35e29e6.jpeg","97612652-902b-480a-a08f-78f9ed03e3ef.jpeg","b2853bc2-2104-4255-a127-eb6e2d3b258d.jpeg","5055028e-82de-4279-966b-15dc37a7dcf2.jpeg","f636b5d4-e9c2-4422-ad7e-88ea48863017.jpeg","67d60774-f9a5-4464-b71d-0766c8a91bbc.jpeg","8f716c57-754d-4cd1-b3e5-2574bd225348.jpeg","92013a6a-09fc-4371-a3dd-dcdf001cc8b0.jpeg"]};
+const IMG=(id,i)=>'https://a0.muscache.com/im/pictures/hosting/Hosting-'+id+'/original/'+PH[id][i]+'?im_w=960';
+const fmt=n=>'$ '+Math.round(n).toLocaleString('es-AR');
+const url=h=>'https://www.airbnb.com.ar/rooms/'+h.id+Q;
+const gmap=h=>'https://www.google.com/maps?q='+h.lat+','+h.lng;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let votes={}, me=null, names={};
+const tree='<svg viewBox="0 0 200 120" aria-hidden="true"><path d="M0 120 L50 40 L80 75 L120 20 L200 120Z" fill="#ffffff" opacity=".18"/><path d="M0 120 L70 60 L110 95 L150 55 L200 120Z" fill="#ffffff" opacity=".28"/><circle cx="160" cy="28" r="14" fill="#ffc93c"/></svg>';
+const gal=h=>{
+  if(h.np>0) return '<div class="gal" data-i="0" data-id="'+h.id+'" data-np="'+h.np+'"><span class="badge">'+h.n+'</span><img referrerpolicy="no-referrer" alt="Foto de '+esc(h.name)+'" src="'+IMG(h.id,0)+'" loading="lazy"><span class="count">1 / '+h.np+'</span><div class="nav"><button aria-label="Foto anterior" data-d="-1">‹</button><button aria-label="Foto siguiente" data-d="1">›</button></div></div>';
+  return '<div class="gal"><span class="badge">'+h.n+'</span><div class="ph"><div>'+tree+'<p><a href="'+url(h)+'" target="_blank" rel="noopener">Ver las fotos en Airbnb ↗</a></p></div></div></div>';
+};
+const card=h=>{
+  const pp=h.price?'<div class="price"><b>'+fmt(h.price)+'</b><small>total · '+fmt(h.price/7)+' por persona</small></div>':'<div class="price"><span class="na">No disponible del 30/12 al 4/1</span></div>';
+  const rt=h.rating?'★ '+h.rating+' ('+h.reviews+(h.reviews==1?' reseña)':' reseñas)'):'Anuncio nuevo';
+  return '<article class="card" id="casa-'+h.n+'">'+gal(h)+'<div class="body">'+
+  '<h3>'+esc(h.name)+'</h3><div class="place">'+esc(h.place)+' · '+rt+'</div>'+
+  '<div class="specs"><span>'+h.guests+' huéspedes</span><span>'+h.rooms+' dormitorios</span><span>'+h.beds+' camas</span><span>'+h.baths+(h.baths==1?' baño':' baños')+'</span></div>'+
+  pp+(h.cancel?'<div class="vnote">'+h.cancel+(h.host?' · Anfitrión: '+esc(h.host):'')+'</div>':'')+
+  '<p>'+esc(h.short)+'</p><ul class="am">'+h.am.map(a=>'<li>'+esc(a)+'</li>').join('')+'</ul>'+
+  '<div class="warn">Ojo: '+esc(h.warn)+'</div>'+
+  '<details><summary>Descripción completa</summary><p>'+esc(h.desc)+'</p></details>'+
+  '<div class="links"><a href="'+url(h)+'" target="_blank" rel="noopener">Ver en Airbnb ↗</a><a href="'+gmap(h)+'" target="_blank" rel="noopener">Abrir en Google Maps ↗</a></div>'+
+  '<div class="vote"><button class="btn" data-vote="'+h.id+'">Votar esta</button></div>'+
+  '</div></article>';
+};
+document.getElementById('cards').innerHTML=H.map(card).join('');
+const mapEl=document.getElementById('map');
+const P=[{t:'Córdoba capital',lat:-31.4167,lng:-64.1833},{t:'Villa Carlos Paz',lat:-31.4241,lng:-64.4978},{t:'Villa Gral. Belgrano',lat:-31.978,lng:-64.556},{t:'Cosquín',lat:-31.2445,lng:-64.4656}];
+const drawMap=()=>{
+  const W=mapEl.clientWidth,Hh=mapEl.clientHeight,pad=28;
+  const x0=-64.72,x1=-64.13,y0=-31.20,y1=-32.02;
+  const X=l=>pad+(l-x0)/(x1-x0)*(W-2*pad), Y=l=>pad+(l-y0)/(y1-y0)*(Hh-2*pad);
+  const small=W<520;
+  let s='<svg viewBox="0 0 '+W+' '+Hh+'" role="img" aria-label="Mapa esquemático con la ubicación de las casas">';
+  s+='<rect width="'+W+'" height="'+Hh+'" rx="12" fill="#eaf2df"/>';
+  s+='<path d="M'+X(-64.72)+' '+Y(-31.25)+' Q'+X(-64.62)+' '+Y(-31.5)+' '+X(-64.68)+' '+Y(-32.02)+' L'+X(-64.72)+' '+Y(-32.02)+'Z" fill="#c9dcb3"/>';
+  s+='<path d="M'+X(-64.60)+' '+Y(-31.20)+' Q'+X(-64.55)+' '+Y(-31.6)+' '+X(-64.62)+' '+Y(-32.02)+'" stroke="#b6cf9b" stroke-width="'+(small?14:22)+'" fill="none" stroke-linecap="round"/>';
+  s+='<ellipse cx="'+X(-64.465)+'" cy="'+Y(-31.375)+'" rx="'+(X(-64.43)-X(-64.5))+'" ry="'+(Y(-31.40)-Y(-31.35))+'" fill="#9cc3f0"/>';
+  if(!small) s+='<text x="'+X(-64.43)+'" y="'+(Y(-31.375)+4)+'" font-size="12" fill="#2a6fdb" font-family="Archivo">Lago San Roque</text>';
+  P.forEach(p=>{s+='<circle cx="'+X(p.lng)+'" cy="'+Y(p.lat)+'" r="4" fill="#1e3a2f"/>';
+    const right=p.lng<-64.3; s+='<text x="'+(X(p.lng)+(right?8:-8))+'" y="'+(Y(p.lat)+(p.t.includes('Carlos')?18:4))+'" text-anchor="'+(right?'start':'end')+'" font-size="'+(small?11:13)+'" font-weight="700" fill="#1e3a2f" font-family="Archivo">'+p.t+'</text>';});
+  const off={1:[-14,-12],4:[14,-14],6:[16,8],3:[-10,14],2:[0,-22],5:[16,0]};
+  H.forEach(h=>{const cx=X(h.lng),cy=Y(h.lat),o=off[h.n],bx=cx+o[0],by=cy+o[1];
+    s+='<line x1="'+cx+'" y1="'+cy+'" x2="'+bx+'" y2="'+by+'" stroke="#1e3a2f" stroke-width="1.5"/><circle cx="'+cx+'" cy="'+cy+'" r="3" fill="#2a6fdb"/>';
+    s+='<a href="#casa-'+h.n+'"><circle cx="'+bx+'" cy="'+by+'" r="11" fill="'+(h.price?'#ffc93c':'#d9d2c0')+'" stroke="#1e3a2f" stroke-width="2"/><text x="'+bx+'" y="'+(by+4.5)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a2f" font-family="Archivo">'+h.n+'</text></a>';});
+  s+='</svg>'; mapEl.innerHTML=s;
+};
+const roMap=new ResizeObserver(drawMap); roMap.observe(mapEl);
+const renderResults=()=>{
+  const counts={},who={}; H.forEach(h=>{counts[h.id]=0;who[h.id]=[]});
+  Object.entries(votes).forEach(([uid,v])=>{if(counts[v]!==undefined){counts[v]++;who[v].push(uid===me?'vos':(names[uid]||'Alguien'))}});
+  const total=Object.values(counts).reduce((a,b)=>a+b,0), max=Math.max(1,...Object.values(counts));
+  const order=[...H].sort((a,b)=>counts[b.id]-counts[a.id]||a.n-b.n);
+  document.getElementById('results').innerHTML=order.map(h=>'<div class="row"><span class="num">'+h.n+'</span><div><div class="lab">'+esc(h.name)+'</div><div class="bar"><i style="width:'+(counts[h.id]/max*100)+'%"></i></div>'+(who[h.id].length?'<div class="who">'+who[h.id].map(esc).join(', ')+'</div>':'')+'</div><span class="v">'+counts[h.id]+(counts[h.id]==1?' voto':' votos')+'</span></div>').join('');
+  const mine=votes[me];
+  document.querySelectorAll('[data-vote]').forEach(b=>{const on=b.dataset.vote===mine;b.textContent=on?'Tu voto ✓':'Votar esta';b.classList.toggle('ghost',on);b.closest('.card').classList.toggle('mine',on)});
+  return total;
+};
+const setStatus=t=>document.getElementById('status').textContent=t;
+renderResults();
+const DB='https://votacion-casas-69c58-default-rtdb.firebaseio.com/votes';
+const nameEl=document.getElementById('nombre');
+try{me=localStorage.getItem('votanteId');if(!me){me='v'+Date.now().toString(36)+Math.random().toString(36).slice(2,10);localStorage.setItem('votanteId',me)}nameEl.value=localStorage.getItem('votanteNombre')||''}catch(e){me='v'+Date.now().toString(36)+Math.random().toString(36).slice(2,10)}
+const apply=data=>{votes={};names={};Object.entries(data||{}).forEach(([k,v])=>{if(v&&v.house){votes[k]=v.house;names[k]=v.name}});
+  const t=renderResults();
+  setStatus(t?t+(t==1?' persona votó.':' personas votaron.')+(votes[me]?'':' Te falta votar a vos.'):'Todavía nadie votó. ¡Arrancá vos!');};
+const load=async()=>{try{const r=await fetch(DB+'.json');apply(await r.json())}catch(e){setStatus('No pude cargar los votos. Revisá tu conexión.')}};
+const vote=async id=>{
+  const nm=nameEl.value.trim();
+  if(!nm){setStatus('Primero escribí tu nombre arriba ↑');nameEl.focus();nameEl.scrollIntoView({block:'center'});return;}
+  try{localStorage.setItem('votanteNombre',nm)}catch(e){}
+  const prev=votes[me]; votes[me]=id; names[me]=nm; renderResults();
+  try{const r=await fetch(DB+'/'+me+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({house:id,name:nm.slice(0,40),at:Date.now()})});
+    if(!r.ok)throw 0; setStatus('¡Listo, '+nm+'! Tu voto quedó guardado.'); load();}
+  catch(e){if(prev)votes[me]=prev;else delete votes[me];renderResults();setStatus('No se pudo guardar tu voto. Probá de nuevo.');}
+};
+nameEl.addEventListener('change',()=>{const nm=nameEl.value.trim();try{localStorage.setItem('votanteNombre',nm)}catch(e){};if(nm&&votes[me])vote(votes[me]);});
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-vote]'); if(b){vote(b.dataset.vote);return;}
+  const n=e.target.closest('.gal button'); if(n){const g=n.closest('.gal'),np=+g.dataset.np;let i=(+g.dataset.i+ +n.dataset.d+np)%np;g.dataset.i=i;g.querySelector('img').src=IMG(g.dataset.id,i);g.querySelector('.count').textContent=(i+1)+' / '+np;}
+});
+load();
+try{const es=new EventSource(DB+'.json');let full={};
+  es.addEventListener('put',ev=>{const d=JSON.parse(ev.data);if(d.path==='/')full=d.data||{};else{const k=d.path.slice(1).split('/')[0];if(d.data===null)delete full[k];else full[k]=d.data}apply(full);});
+  es.addEventListener('patch',()=>load());
+}catch(e){setInterval(load,15000)}
+}
+</script>
+</body>
+</html>
